@@ -1,1 +1,19 @@
+import pandas as pd
+# from model import ...   (on l'ajoutera plus tard)
 
+def charger(chemin):
+    df = pd.read_excel(chemin, sheet_name="Données")
+    # TODO : convertir date_naissance en date, créer les colonnes mois et jour,
+    #        remplacer les pays manquants par "Inconnu"
+    return df
+
+def separer(df, part_test=0.2, graine=0):
+    # TODO : mélanger les lignes (df.sample(frac=1, random_state=graine)),
+    #        puis renvoyer train (80 %) et test (20 %)
+    ...
+
+if __name__ == "__main__":
+    df = charger("data/liste_rouge_categorisee.xlsx")
+    train, test = separer(df)
+    print(len(train), len(test))
+    print(train["categorie"].value_counts())
